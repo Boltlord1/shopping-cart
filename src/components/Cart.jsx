@@ -2,7 +2,7 @@ import { useOutletContext } from "react-router"
 import Item from './CartItem'
 
 export default function Cart() {
-    const [cart, setCart] = useOutletContext()
+    const {cart, setCart} = useOutletContext()
     const total = cart.map(item => (item.price * 100) * item.count).reduce((tot, cur) => tot += cur, 0).toString()
     
     return (

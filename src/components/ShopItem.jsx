@@ -2,8 +2,8 @@ import { useState } from "react"
 import { useOutletContext } from "react-router"
 
 export default function Item({ data }) {
+    const {cart, setCart} = useOutletContext()
     const [value, setValue] = useState(1)
-    const [cart, setCart] = useOutletContext()
 
     const decrement = () => value > 1 ? setValue(value - 1) : setValue(1)
     const increment = () => value < 50 ? setValue(value + 1) : setValue(50)

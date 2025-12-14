@@ -2,7 +2,7 @@ import { useState, useEffect } from "react"
 import { useOutletContext } from "react-router"
 
 export default function Item({ data }) {
-    const [cart, setCart] = useOutletContext()
+    const {cart, setCart} = useOutletContext()
     const [value, setValue] = useState(data.count)
     const [display, setDisplay] = useState(data.count)
     const total = ((data.price * 100) * data.count).toString()
