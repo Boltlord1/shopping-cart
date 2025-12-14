@@ -1,3 +1,15 @@
+import { useOutletContext } from "react-router"
+import Item from './CartItem'
+
 export default function Cart() {
-    return <h1>Cart page</h1>
+    const [cart, setCart] = useOutletContext()
+    const total = cart.map(item => (item.price * 100) * item.count).reduce((tot, cur) => tot += cur, 0).toString()
+    
+    return (
+        <main>
+            <h1>Cart page</h1>
+            {cart.map(data => <Item key={data.id} data={data} />)}
+            <h2>Total: ${total.slice(0, -2) + '.' + total.slice(-2)}</h2>
+        </main>
+    )
 }
