@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&family=Zalando+Sans:ital,wght@0,200..900;1,200..900&display=swap');
+
 :root {
-    font-family: sans-serif;
+    font-family: 'Zalando Sans', sans-serif;
     font-size: 16px;
+    --dashboard-color: hsl(200 100 30)
 }
 
 * {
@@ -12,4 +15,53 @@
 body {
     display: flex;
     flex-direction: column;
+    min-height: 100vh;
+}
+
+#root {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1;
+}
+
+.dashboard {
+    color: white;
+    background-color: var(--dashboard-color);
+    font-family: 'Lexend', sans-serif;
+    display: flex;
+    justify-content: space-around;
+}
+
+.title {
+    align-self: center;
+}
+
+.links {
+    display: flex;
+    gap: 20px;
+}
+
+.links > a {
+    color: white;
+    font-size: 1.5rem;
+    text-decoration: none;
+    padding: 30px;
+}
+
+.links > a:hover {
+    background-color: hsl(200 100 40);
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+input[type=number] {
+  -moz-appearance: textfield;
 }

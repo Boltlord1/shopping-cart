@@ -2,6 +2,7 @@ import { useState } from "react"
 import { useOutletContext } from "react-router"
 import Filter from "./Filter"
 import Item from "./ShopItem"
+import styles from '../styles/shop.module.css'
 
 export default function Shop() {
     const {data} = useOutletContext()
@@ -21,15 +22,17 @@ export default function Shop() {
     }
 
     return (
-        <main>
-            <section>
-                <Filter name="men's clothing" id="men" change={change} />
-                <Filter name="jewelery" id="jwl" change={change} />
-                <Filter name="electronics" id="elc" change={change} />
-                <Filter name="women's clothing" id="wmn" change={change} />
+        <main className={styles.main}>
+            <section className={styles.filters}>
+                <div>
+                    <Filter name="Men's clothing" id="men" change={change} />
+                    <Filter name="Women's clothing" id="wmn" change={change} />
+                    <Filter name="Jewelery" id="jwl" change={change} />
+                    <Filter name="Electronics" id="elc" change={change} />
+                </div>
             </section>
-            <section>
-                <h1>Shop Page</h1>
+            <section className={styles.items}>
+                <h1 className={styles.title}>Shop Page</h1>
                 {filtered.map(data => <Item key={data.id} data={data} />)}
             </section>
         </main>

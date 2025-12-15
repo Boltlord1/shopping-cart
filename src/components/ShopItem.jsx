@@ -1,5 +1,6 @@
 import { useState } from "react"
 import { useOutletContext } from "react-router"
+import styles from '../styles/shop.module.css'
 
 export default function Item({ data }) {
     const {cart, setCart} = useOutletContext()
@@ -27,16 +28,23 @@ export default function Item({ data }) {
     }
 
     return (
-        <div>
-            <h2>{data.title}</h2>
-            <h3>${data.price}</h3>
-            <p>{data.description}</p>
-            <h3>Rating: {data.rating.rate} ({data.rating.count})</h3>
-            <form onSubmit={addToCart}>
-                <button type="button" onClick={decrement}>-</button>
-                <input type="number" name="count" min="1" max="50" value={value} onChange={manual} required />
-                <button type="button" onClick={increment}>+</button>
-                <button type="submit">Add to Cart</button>
+        <div className={styles.item}>
+            <img className={styles.img} src={data.image} alt="" />
+            <div className={styles.details}>
+                <h3 className={styles.name}>{data.title}</h3>
+                <p className={styles.description}>{data.description}</p>
+                <div className={styles.info}>
+                    <h4 className={styles.rating}>Rating: {data.rating.rate} ({data.rating.count})</h4>
+                    <h4 className={styles.price}>${data.price}</h4>
+                </div>
+            </div>
+            <form onSubmit={addToCart} className={styles.form}>
+                <div className={styles.quantity}>
+                    <button type="button" onClick={decrement}>-</button>
+                    <input type="number" name="count" min="1" max="50" value={value} onChange={manual} required />
+                    <button type="button" onClick={increment}>+</button>
+                </div>
+                <button type="submit" className={styles.submit}>Add to Cart</button>
             </form>
         </div>
     )
