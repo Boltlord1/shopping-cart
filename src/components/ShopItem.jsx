@@ -8,7 +8,7 @@ export default function Item({ data }) {
 
     const decrement = () => value > 1 ? setValue(value - 1) : setValue(1)
     const increment = () => value < 50 ? setValue(value + 1) : setValue(50)
-    const manual = (e) => setValue(e.target.value)
+    const manual = (e) => setValue(Number(e.target.value))
     function addToCart(e) {
         e.preventDefault()
         const formData = new FormData(e.target)
