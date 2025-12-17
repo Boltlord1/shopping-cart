@@ -10,7 +10,8 @@ export default function Cart() {
         <main className={styles.main}>
             <h1 className={styles.title}>Cart page</h1>
             {cart.map(data => <Item key={data.id} data={data} />)}
-            <h2 className={styles.total}>Total: ${total.slice(0, -2) + '.' + total.slice(-2)}</h2>
+            {cart.length === 0 ? <h2 className={styles.nothing}>Nothing here...</h2> :
+            <h2 className={styles.total}>Total: ${total.slice(0, -2) + '.' + total.slice(-2)}</h2>}
         </main>
     )
 }

@@ -6,21 +6,30 @@ import shopStyles from '../styles/shop.module.css'
 export default function Item({ data }) {
     const {cart, setCart} = useOutletContext()
     const [value, setValue] = useState(data.count)
-    const [display, setDisplay] = useState(data.count)
+    const [display, setDisplay] = useState(data.count.toString())
     const total = ((data.price * 100) * data.count).toString()
 
     function decrement() {
         if (value < 2) return
         setValue(value - 1)
-        setDisplay(value - 1)
+        setDisplay((value - 1).toString())
     }
     function increment() {
         if (value > 49) return
         setValue(value + 1)
-        setDisplay(value + 1)
+        setDisplay((value + 1).toString())
     }
-    const manual = (e) => setDisplay(Number(e.target.value))
-    const submit = () => display > 0 && display < 51 ? setValue(display) : setDisplay(value)
+    const manual = (e) => setDisplay(e.target.value)
+    const submit = () => display < 1 || display > 50 ? setDisplay(value.toString()) : submitWithTrim()
+    function submitWithTrim() {
+        let char = 0
+        while (display.charAt(char) === '0') {
+            char++
+        }
+        const str = display.slice(char)
+        setDisplay(str)
+        setValue(Number(str))
+    }
 
     useEffect(() => {
         const array = []
@@ -55,6 +64,7 @@ export default function Item({ data }) {
                 <div className={cartStyles.buttons}>
                     <button onClick={decrement}>-</button>
                     <button onClick={increment}>+</button>
+                    <button onClick={remove}>x</button>
                 </div>
                 <h4 className={cartStyles.subtotal}>Total: ${total.slice(0, -2) + '.' + total.slice(-2)}</h4>
             </div>
