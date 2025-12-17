@@ -56,6 +56,22 @@ main {
     background-color: hsl(200 100 40);
 }
 
+.links > a:last-child {
+    position: relative;
+}
+
+.cart-length {
+    color: black;
+    background-color: hsl(340 100 80);
+    font-family: 'Zalando Sans', sans-serif;
+    font-size: 1rem;
+    padding: 5px 10px;
+    position: absolute;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
   -webkit-appearance: none;

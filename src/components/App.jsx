@@ -18,7 +18,7 @@ export default function App() {
 
     return (
         <>
-        <Dashboard />
+        <Dashboard cartLength={cart.length} />
         <Outlet context={{ cart, setCart, data }} />
         </>
     )
